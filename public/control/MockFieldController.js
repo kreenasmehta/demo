@@ -25,23 +25,31 @@
          * gets the details of the field
          */
         function getField(id) {
-            var field = MockFieldService.getField(id);
-            vm.field = field;
-            if(vm.field.displayAlpha){
-                selectItem(vm.items[0]);
-            } else{
-                selectItem(vm.items[1]);
-            }
-
+            MockFieldService.getField(id)
+                .success(function (field) {
+                    vm.field = field;
+                    if(vm.field.displayAlpha){
+                        selectItem(vm.items[0]);
+                    } else{
+                        selectItem(vm.items[1]);
+                    }
+                })
+                .error(function (error) {
+                    console.log(error);
+                });
         }
 
         /**
          * saves the details of the field
          */
         function saveField(fieldJson) {
-            var updatedField = MockFieldService.saveField(fieldJson);
-            console.log(updatedField);
-
+            var updatedField = MockFieldService.saveField(fieldJson)
+                .success(function (updatedField) {
+                    console.log(updatedField);
+                })
+                .error(function (error) {
+                    console.log(error);
+                });
         }
 
         /**
