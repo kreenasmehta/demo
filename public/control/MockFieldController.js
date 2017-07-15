@@ -29,6 +29,7 @@
             MockFieldService.getField(id)
                 .success(function (field) {
                     vm.field = field;
+                    validateChoices(field.choices);
                     if(vm.field.displayAlpha){
                         selectItem(vm.items[0]);
                     } else{
