@@ -11,6 +11,7 @@
         var vm = this;
         var fieldId = $routeParams["id"];
         var maxChoiceCharacters = 40;
+        var maxTotalChoices = 50;
         vm.items = ['Display choices in alphabetical order','Display choices in random order'];
         vm.getField = getField;
         vm.saveField = saveField;
@@ -71,6 +72,17 @@
         function validateChoices(choices) {
             // longerChoice is set to false
             var longerChoice = false;
+
+            /*
+            if the total number of choices are more than 50,
+            display exceedMaxChoices error
+            else set exceedMaxChoices to false
+             */
+            if(choices.length > maxTotalChoices){
+                vm.exceedMaxChoices = "Total number of choices cannot be more than 50"
+            } else{
+                vm.exceedMaxChoices = false;
+            }
 
             // traverse through all the choices
             for(var i in choices){
