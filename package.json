@@ -1,0 +1,22 @@
+{
+  "name": "fieldbuilder",
+  "version": "1.0.0",
+  "description": "quickbase demo",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "express-session": "^1.14.2"
+  },
+  "keywords": [
+    "quickbase"
+  ],
+  "author": "Kreena Mehta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kreenasmehta/demo/issues"
+  },
+  "homepage": "https://github.com/kreenasmehta/demo#readme"
+}
