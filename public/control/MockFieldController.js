@@ -10,6 +10,7 @@
 
         var vm = this;
         var fieldId = $routeParams["id"];
+        var maxChoiceCharacters = 40;
         vm.items = ['Display choices in alphabetical order','Display choices in random order'];
         vm.getField = getField;
         vm.saveField = saveField;
@@ -74,7 +75,7 @@
             // traverse through all the choices
             for(var i in choices){
                 // if current choice is longer than 40 characters in length
-                if(choices[i].length > 40){
+                if(choices[i].length > maxChoiceCharacters){
                     // set longerChoice to true, break out of the loop
                     longerChoice = true;
                     break;
