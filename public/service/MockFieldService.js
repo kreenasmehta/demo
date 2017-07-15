@@ -16,14 +16,16 @@
         return FieldService;
 
         /**
-         * gets the field
+         * gets the details of the field
+         * @param id - id of the required field
          */
         function getField(id) {
             return $http.get('/api/fieldBuilder');
         }
 
         /**
-         * saves the field
+         * saves the details of the field
+         * @param fieldJson - json object of the field
          */
         function saveField(fieldJson) {
             var jsonData = {"x":"Apple", "y":"Mango"};

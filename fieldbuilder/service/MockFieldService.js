@@ -22,7 +22,7 @@ module.exports = function (app) {
     app.put('/api/fieldBuilder', saveField);
 
     /**
-     *
+     * gets the details of the field
      * @param req
      * @param res
      * @returns {{label: string, required: boolean, choices: string[], displayAlpha: boolean, default: string}}
@@ -32,13 +32,11 @@ module.exports = function (app) {
     }
 
     /**
-     *
+     * saves the details of the field
      * @param req
      * @param res
      */
     function saveField(req, res) {
-
-
         field = req.body;
         res.send(field);
     }

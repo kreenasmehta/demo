@@ -18,6 +18,9 @@
         vm.selectItem = selectItem;
         vm.validateChoices = validateChoices;
 
+        /**
+         * init method gets called when the controller is loaded
+         */
         function init() {
             getField(fieldId);
         }
@@ -26,12 +29,20 @@
 
         /**
          * gets the details of the field
+         * @param id - id of the required field
          */
         function getField(id) {
             MockFieldService.getField(id)
                 .success(function (field) {
+                    // assign field to vm.field to display on the view
                     vm.field = field;
+                    // validate the choices field
                     validateChoices(field.choices);
+                    /*
+                    if displayAlpha is true,
+                    select - Display choices in alphabetical order
+                    else select - Display choices in random order
+                     */
                     if(vm.field.displayAlpha){
                         selectItem(vm.items[0]);
                     } else{
@@ -39,25 +50,29 @@
                     }
                 })
                 .error(function (error) {
+                    // logs error on the console
                     console.log(error);
                 });
         }
 
         /**
          * saves the details of the field
+         * @param fieldJson - json object of the field
          */
         function saveField(fieldJson) {
             var updatedField = MockFieldService.saveField(fieldJson)
                 .success(function (updatedField) {
+                    // logs the updated field to the console
                     console.log(updatedField);
                 })
                 .error(function (error) {
+                    // logs error on the console
                     console.log(error);
                 });
         }
 
         /**
-         *
+         * selects an item form the items array
          * @param item
          */
         function selectItem(item) {
