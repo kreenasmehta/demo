@@ -14,6 +14,7 @@
         vm.getField = getField;
         vm.saveField = saveField;
         vm.selectItem = selectItem;
+        vm.validateUpdatedChoices = validateUpdatedChoices;
 
         function init() {
             getField(fieldId);
@@ -58,6 +59,37 @@
          */
         function selectItem(item) {
             vm.selectedItem = item;
+        }
+
+        /**
+         * Validates the updated choices
+         * sets choiceError if individual choices are longer than 40 characters
+         * @param choices
+         */
+        function validateUpdatedChoices(choices) {
+            // longerChoice is set to false
+            var longerChoice = false;
+
+            // traverse through all the choices
+            for(var i in choices){
+                // if current choice is longer than 40 characters in length
+                if(choices[i].length > 40){
+                    // set longerChoice to true, break out of the loop
+                    longerChoice = true;
+                    break;
+                }
+
+            }
+
+            /*
+            of longerChoice is true, display the choiceError,
+            else set the choiceError to false
+             */
+            if(longerChoice){
+                vm.choiceError = "Choices cannot be longer than 40 characters";
+            } else{
+                vm.choiceError = false;
+            }
         }
 
     }

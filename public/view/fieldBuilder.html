@@ -7,7 +7,8 @@
 				<div class="form-group">
 					<label for="label">Label*</label>
 					<p ng-hide="fieldbuilder.label.$valid" class="error-text">Label is a required field</p>
-					<input name="label" id="label" type="text" class="form-control" ng-model="model.field.label"
+					<input name="label" id="label" type="text" class="form-control"
+					       ng-model="model.field.label"
 					       required>
 				</div>
 
@@ -28,7 +29,13 @@
 				<!--Choices-->
 				<div class="form-group">
 					<label for="choices">Choices</label>
-					<textarea id="choices" class="form-control" rows="10" ng-model="model.field.choices" ng-trim="false"
+					<p ng-show="model.choiceError" class="error-text">{{model.choiceError}}</p>
+					<textarea ng-change="model.validateUpdatedChoices(model.field.choices)"
+					          id="choices"
+					          class="form-control"
+					          rows="10"
+					          ng-model="model.field.choices"
+					          ng-trim="false"
 					          ng-list="&#10;">
 				</textarea>
 				</div>
