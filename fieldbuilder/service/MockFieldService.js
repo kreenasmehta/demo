@@ -28,6 +28,7 @@ module.exports = function (app) {
      * @returns {{label: string, required: boolean, choices: string[], displayAlpha: boolean, default: string}}
      */
     function getField(req, res) {
+
         res.send(field);
     }
 
@@ -37,6 +38,8 @@ module.exports = function (app) {
      * @param res
      */
     function saveField(req, res) {
+
+
         field = req.body;
         res.send(field);
     }
