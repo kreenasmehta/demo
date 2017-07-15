@@ -28,7 +28,6 @@ module.exports = function (app) {
      * @returns {{label: string, required: boolean, choices: string[], displayAlpha: boolean, default: string}}
      */
     function getField(req, res) {
-
         res.send(field);
     }
 
