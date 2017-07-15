@@ -15,3 +15,7 @@ h1.fieldBuilderHeader{
     padding-left: 50px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.error-text{
+    color: red;
+}

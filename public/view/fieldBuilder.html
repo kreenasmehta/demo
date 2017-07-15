@@ -1,60 +1,63 @@
 <div class="outer-background">
 	<h1 class="fieldBuilderHeader">Field Builder</h1>
 	<div class="container inner-background">
-		<div class="form-group">
-			<!--Label-->
+		<form name="fieldbuilder">
 			<div class="form-group">
-				<label for="label">Label</label>
-				<input id="label" type="text" class="form-control" ng-model="model.field.label">
-			</div>
+				<!--Label-->
+				<div class="form-group">
+					<label for="label">Label*</label>
+					<p ng-hide="fieldbuilder.label.$valid" class="error-text">Label is a required field</p>
+					<input name="label" id="label" type="text" class="form-control" ng-model="model.field.label"
+					       required>
+				</div>
 
-			<!--Type-->
-			<div class="form-group">
-				<label for="type">Type</label>
-				<span>Multi-select Text</span>
-				<input id="type" type="checkbox" ng-model="model.field.required">
-				<span>A value id required</span>
-			</div>
+				<!--Type-->
+				<div class="form-group">
+					<label for="type">Type</label>
+					<span>Multi-select Text</span>
+					<input id="type" type="checkbox" ng-model="model.field.required">
+					<span>A value id required</span>
+				</div>
 
-			<!--Default value-->
-			<div class="form-group">
-				<label for="default-value">Default Value</label>
-				<input id="default-value" type="text" class="form-control" ng-model="model.field.default">
-			</div>
+				<!--Default value-->
+				<div class="form-group">
+					<label for="default-value">Default Value</label>
+					<input id="default-value" type="text" class="form-control" ng-model="model.field.default">
+				</div>
 
-			<!--Choices-->
-			<div class="form-group">
-				<label for="choices">Choices</label>
-				<textarea id="choices" class="form-control" rows="10" ng-model="model.field.choices" ng-trim="false"
-				          ng-list="&#10;">
+				<!--Choices-->
+				<div class="form-group">
+					<label for="choices">Choices</label>
+					<textarea id="choices" class="form-control" rows="10" ng-model="model.field.choices" ng-trim="false"
+					          ng-list="&#10;">
 				</textarea>
-			</div>
+				</div>
 
-			<!--Order-->
-			<div class="form-group">
-				<div class="btn-group dropdown">
-					<button id="split-button" type="button" class="btn btn-default">{{model.selectedItem || 'Select an option to
-						arrange the choices.'}}
-					</button>
-					<button type="button" class="btn dropdown-toggle" aria-haspopup="true"
-					        aria-expanded="true">
-						<span class="caret"></span>
-					</button>
-					<ul uib-dropdown-menu="" role="menu" aria-labelledby="split-button" class="dropdown-menu">
-						<li role="menuitem" ng-repeat="item in model.items" ng-click="model.selectItem(item)">
-							<a href>{{item}}</a>
-						</li>
-					</ul>
+				<!--Order-->
+				<div class="form-group">
+					<div class="btn-group dropdown">
+						<button id="split-button" type="button" class="btn btn-default">{{model.selectedItem || 'Select an option to
+							arrange the choices.'}}
+						</button>
+						<button type="button" class="btn dropdown-toggle" aria-haspopup="true"
+						        aria-expanded="true">
+							<span class="caret"></span>
+						</button>
+						<ul uib-dropdown-menu="" role="menu" aria-labelledby="split-button" class="dropdown-menu">
+							<li role="menuitem" ng-repeat="item in model.items" ng-click="model.selectItem(item)">
+								<a href>{{item}}</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!--Save changes or cancel-->
+				<div class="form-group">
+					<button class="btn btn-success" ng-click="model.saveField(model.field)">Save changes</button>
+					<span>OR</span>
+					<button class="btn btn-danger">Cancel</button>
 				</div>
 			</div>
-
-			<!--Save changes or cancel-->
-			<div class="form-group">
-				<button class="btn btn-success" ng-click="model.saveField(model.field)">Save changes</button>
-				<span>OR</span>
-				<button class="btn btn-danger">Cancel</button>
-			</div>
-		</div>
+		</form>
 	</div>
-
 </div>
