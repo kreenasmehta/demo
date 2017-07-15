@@ -30,7 +30,7 @@
 				<div class="form-group">
 					<label for="choices">Choices</label>
 					<p ng-show="model.choiceError" class="error-text">{{model.choiceError}}</p>
-					<textarea ng-change="model.validateUpdatedChoices(model.field.choices)"
+					<textarea ng-change="model.validateChoices(model.field.choices)"
 					          id="choices"
 					          class="form-control"
 					          rows="10"

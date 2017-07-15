@@ -14,7 +14,7 @@
         vm.getField = getField;
         vm.saveField = saveField;
         vm.selectItem = selectItem;
-        vm.validateUpdatedChoices = validateUpdatedChoices;
+        vm.validateChoices = validateChoices;
 
         function init() {
             getField(fieldId);
@@ -66,7 +66,7 @@
          * sets choiceError if individual choices are longer than 40 characters
          * @param choices
          */
-        function validateUpdatedChoices(choices) {
+        function validateChoices(choices) {
             // longerChoice is set to false
             var longerChoice = false;
 
