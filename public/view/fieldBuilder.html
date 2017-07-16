@@ -82,7 +82,7 @@
 						<p ng-show="model.cannotSave" class="error-text">{{model.cannotSave}}</p>
 						<button class="btn saveButton" ng-click="model.saveField(model.field)">Save changes</button>
 						<span>Or</span>
-						<a class="cancel">Cancel</a>
+						<a class="cancel" ng-click="model.getField(1)">Cancel</a>
 					</div>
 				</div>
 		</form>
