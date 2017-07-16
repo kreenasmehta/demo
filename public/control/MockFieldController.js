@@ -81,12 +81,12 @@
                     fieldJson.choices.sort();
                     fieldJson.choices.reverse();
                 }
-                var updatedField = MockFieldService.saveField(fieldJson)
+                MockFieldService.saveField(fieldJson)
                     .success(function (updatedField) {
                         // logs the updated field to the console
                         vm.field = updatedField;
                         console.log(updatedField);
-                        ;                })
+                    })
                     .error(function (error) {
                         // logs error on the console
                         console.log(error);
