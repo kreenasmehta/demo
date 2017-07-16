@@ -17,6 +17,8 @@
         vm.saveField = saveField;
         vm.selectItem = selectItem;
         vm.validateChoices = validateChoices;
+        vm.checkIfDefaultValueExists = checkIfDefaultValueExists;
+        vm.addNewDefaultToChoices = addNewDefaultToChoices;
 
         /**
          * init method gets called when the controller is loaded
@@ -60,11 +62,18 @@
          * @param fieldJson - json object of the field
          */
         function saveField(fieldJson) {
+            // check if the default value exists in the choices
+            var defaultValueExists = checkIfDefaultValueExists(fieldJson);
+            if(!defaultValueExists){
+                // if false, add the new default value to the list
+                fieldJson = addNewDefaultToChoices(fieldJson);
+            }
             var updatedField = MockFieldService.saveField(fieldJson)
                 .success(function (updatedField) {
                     // logs the updated field to the console
+                    vm.field = updatedField;
                     console.log(updatedField);
-                })
+;                })
                 .error(function (error) {
                     // logs error on the console
                     console.log(error);
@@ -119,6 +128,36 @@
             } else{
                 vm.choiceError = false;
             }
+        }
+
+        /**
+         * Checks if the given default value is in the choices
+         * @param fieldJson - json object of the field
+         * @returns {boolean} - returns true oif present
+         * otherwise, false
+         */
+        function checkIfDefaultValueExists(fieldJson) {
+            var choices = fieldJson.choices;
+            var defaultValue = fieldJson.default;
+            if(choices.includes(defaultValue)){
+                return true;
+            } else{
+                return false;
+            }
+
+        }
+
+        /**
+         * Adds the new default value to the list
+         * @param fieldJson - json object of the field
+         * @returns {*} - returns updated field json
+         * after adding the new default value to the list of existing choices
+         */
+        function addNewDefaultToChoices(fieldJson) {
+            var defaultValue = fieldJson.default;
+            // push the new default value of the list of choices
+            fieldJson.choices.push(defaultValue);
+            return fieldJson;
         }
 
     }
