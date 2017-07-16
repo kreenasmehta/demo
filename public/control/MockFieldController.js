@@ -19,6 +19,7 @@
         vm.validateChoices = validateChoices;
         vm.checkIfDefaultValueExists = checkIfDefaultValueExists;
         vm.addNewDefaultToChoices = addNewDefaultToChoices;
+        vm.canSave = canSave; 
 
         /**
          * init method gets called when the controller is loaded
@@ -62,22 +63,30 @@
          * @param fieldJson - json object of the field
          */
         function saveField(fieldJson) {
-            // check if the default value exists in the choices
-            var defaultValueExists = checkIfDefaultValueExists(fieldJson);
-            if(!defaultValueExists){
-                // if false, add the new default value to the list
-                fieldJson = addNewDefaultToChoices(fieldJson);
+            // check if the field can be saved
+            if(canSave(fieldJson)){
+                vm.cannotSave = false;
+                // check if the default value exists in the choices
+                var defaultValueExists = checkIfDefaultValueExists(fieldJson);
+                if(!defaultValueExists){
+                    // if false, add the new default value to the list
+                    fieldJson = addNewDefaultToChoices(fieldJson);
+                }
+                var updatedField = MockFieldService.saveField(fieldJson)
+                    .success(function (updatedField) {
+                        // logs the updated field to the console
+                        vm.field = updatedField;
+                        console.log(updatedField);
+                        ;                })
+                    .error(function (error) {
+                        // logs error on the console
+                        console.log(error);
+                    });
+            } else{
+                // else display cannotSave error
+                vm.cannotSave = "Cannot save the field until the requirements are met."
             }
-            var updatedField = MockFieldService.saveField(fieldJson)
-                .success(function (updatedField) {
-                    // logs the updated field to the console
-                    vm.field = updatedField;
-                    console.log(updatedField);
-;                })
-                .error(function (error) {
-                    // logs error on the console
-                    console.log(error);
-                });
+
         }
 
         /**
@@ -158,6 +167,26 @@
             // push the new default value of the list of choices
             fieldJson.choices.push(defaultValue);
             return fieldJson;
+        }
+
+        /**
+         * Checks if the field form can be saved
+         * @param fieldJson - json object of the field
+         * @returns {boolean} - returns true if all the requirements are met,
+         * else returns false
+         */
+        function canSave(fieldJson) {
+            /*
+            if field label is empty
+            or individual choices exceeds the limit of 40 characters
+            or total number of choices are more than 40
+            then cannot save the field (returns false)
+            else returns true
+             */
+            if(fieldJson.label === undefined || vm.choiceError !== false || vm.exceedMaxChoices !== false){
+                return false;
+            }
+            return true;
         }
 
     }

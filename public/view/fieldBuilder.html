@@ -61,6 +61,7 @@
 
 				<!--Save changes or cancel-->
 				<div class="form-group">
+					<p ng-show="model.cannotSave" class="error-text">{{model.cannotSave}}</p>
 					<button class="btn btn-success" ng-click="model.saveField(model.field)">Save changes</button>
 					<span>OR</span>
 					<button class="btn btn-danger">Cancel</button>
