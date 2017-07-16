@@ -2,7 +2,7 @@
     background-color: black;
     padding-top: 50px;
     padding-bottom: 50px;
-    font-family: Geneva, Tahoma, Verdana, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .inner-background{
@@ -14,7 +14,7 @@
 h1.fieldBuilderHeader{
     color: lemonchiffon;
     padding-left: 80px;
-    font-weight: 100;
+    font-weight: 400;
 }
 
 .error-text{
@@ -44,4 +44,8 @@ form{
 .cancel{
     color: red;
     margin-left: 20px;
+}
+
+label{
+    font-weight: 400;
 }
