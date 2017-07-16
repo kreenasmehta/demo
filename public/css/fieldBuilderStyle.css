@@ -44,6 +44,10 @@ label{
     font-weight: 400;
 }
 
+.default-value-input{
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffe6ee), to(white));
+}
+
 @media (min-width: 420px) {
     .outer-background{
         background-color: black;
