@@ -12,7 +12,7 @@
         var fieldId = $routeParams["id"];
         var maxChoiceCharacters = 40;
         var maxTotalChoices = 50;
-        vm.items = ['Display choices in alphabetical order','Display choices in random order'];
+        vm.items = ['Display choices in alphabetical order','Display choices in reverse alphabetical order'];
         vm.getField = getField;
         vm.saveField = saveField;
         vm.selectItem = selectItem;
@@ -47,9 +47,9 @@
                     else select - Display choices in random order
                      */
                     if(vm.field.displayAlpha){
-                        selectItem(vm.items[0]);
+                        selectItem(vm.items[0], field);
                     } else{
-                        selectItem(vm.items[1]);
+                        selectItem(vm.items[1], field);
                     }
                 })
                 .error(function (error) {
@@ -72,6 +72,15 @@
                     // if false, add the new default value to the list
                     fieldJson = addNewDefaultToChoices(fieldJson);
                 }
+                /**
+                 * check the order required while saving the field
+                 */
+                if(fieldJson.displayAlpha == true){
+                    fieldJson.choices.sort();
+                } else {
+                    fieldJson.choices.sort();
+                    fieldJson.choices.reverse();
+                }
                 var updatedField = MockFieldService.saveField(fieldJson)
                     .success(function (updatedField) {
                         // logs the updated field to the console
@@ -91,9 +100,22 @@
 
         /**
          * selects an item form the items array
-         * @param item
+         * @param item - item of the order
+         * @param field - json object of the field
          */
-        function selectItem(item) {
+        function selectItem(item, field) {
+            /*
+            sort the choices
+             */
+            field.choices.sort();
+            if(item === vm.items[0]){
+                field.displayAlpha = true;
+            } else{
+                // if reverse order is selected, reverse the items in the choice list
+                field.displayAlpha = false;
+                field.choices.reverse();
+            }
+            vm.field = field;
             vm.selectedItem = item;
         }
 

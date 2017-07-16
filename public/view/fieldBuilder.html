@@ -52,7 +52,8 @@
 							<span class="caret"></span>
 						</button>
 						<ul uib-dropdown-menu="" role="menu" aria-labelledby="split-button" class="dropdown-menu">
-							<li role="menuitem" ng-repeat="item in model.items" ng-click="model.selectItem(item)">
+							<li role="menuitem" ng-repeat="item in model.items"
+							    ng-click="model.selectItem(item, model.field)">
 								<a href>{{item}}</a>
 							</li>
 						</ul>
