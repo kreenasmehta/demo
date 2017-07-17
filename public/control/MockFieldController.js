@@ -19,7 +19,7 @@
         vm.validateChoices = validateChoices;
         vm.checkIfDefaultValueExists = checkIfDefaultValueExists;
         vm.addNewDefaultToChoices = addNewDefaultToChoices;
-        vm.canSave = canSave; 
+        vm.canSave = canSave;
 
         /**
          * init method gets called when the controller is loaded
