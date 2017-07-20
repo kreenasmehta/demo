@@ -7,22 +7,13 @@ h1.fieldBuilderHeader{
 
 .inner-background{
     background-color: white;
-    padding: 30px;
     border-radius: 10px;
 }
-
 
 .error-text{
     color: red;
 }
 
-
-
-.button-top-padding{
-    padding-top: 40px;
-    padding-bottom: 40px;
-
-}
 
 .saveButton {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#86b300));
@@ -51,7 +42,7 @@ label{
     .outer-background{
         background-color: black;
         padding-top: 50px;
-        padding-bottom: 50px;
+        padding-bottom: 200px;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
@@ -61,9 +52,21 @@ label{
         font-weight: 400;
     }
 
+    .inner-background{
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+    }
+
     form{
         padding: 70px;
         padding-top: 40px;
+    }
+
+    .button-top-padding{
+        padding-top: 40px;
+        padding-bottom: 40px;
+
     }
 
 }
