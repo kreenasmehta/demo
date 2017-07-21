@@ -35,6 +35,7 @@
          * @param id - id of the required field
          */
         function getField(id) {
+            vm.cannotSave = false;
             MockFieldService.getField(id)
                 .success(function (field) {
                     // assign field to vm.field to display on the view
