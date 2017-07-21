@@ -1,5 +1,6 @@
 /**
  * Created by kreenamehta on 7/11/17.
+ * Client side field builder service
  */
 (function () {
     angular

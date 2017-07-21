@@ -1,5 +1,6 @@
 /**
  * Created by kreenamehta on 7/15/17.
+ * Server side service
  */
 module.exports = function (app) {
     var field = {
