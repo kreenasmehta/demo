@@ -56,11 +56,14 @@ module.exports = function (app) {
         request(mockyPostRequest, function(err, res, body) {
             if (res && (res.statusCode === 200 || res.statusCode === 201)) {
                 // Logging the post data on the console
+                console.log("Logging the post data to the console: ");
                 console.log(body);
             }
         });
 
         // Send back the updated field json in response
+        console.log("Updated field:");
+        console.log(field);
         res.send(field);
     }
 };
