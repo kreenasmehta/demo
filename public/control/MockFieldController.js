@@ -36,6 +36,7 @@
          * @param id - id of the required field
          */
         function getField(id) {
+            // Set the error to false when the page is refreshed or cancel is hit
             vm.cannotSave = false;
             MockFieldService.getField(id)
                 .success(function (field) {
